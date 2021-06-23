@@ -27,10 +27,8 @@
 
 %locations
 
-%union {
-  int ival;
-}
-
+%define api.value.type union
+%define api.token.constructor
 /* Bison Declarations */
 %token PLUS   "+"
        MINUS  "-"
@@ -39,9 +37,9 @@
        LPAR   "("
        RPAR   ")"
        EOL    "end of line"
-%token <ival> NUM "number"
-%type  <ival> exp
-%printer { yyo.write($$); } <ival>
+%token <int> NUM "number"
+%type  <int> exp
+%printer { yyo.write($$); } <int>
 
 %left "-" "+"
 %left "*" "/"
